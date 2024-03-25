@@ -19,7 +19,11 @@ public class QueryBuilder
     /// <param name="condition">The initial logical operator.</param>
     public QueryBuilder(Operator condition = Operator.And)
     {
-        _currentQuery = new Query { Operator = condition };
+        _currentQuery = new Query
+        {
+            Operator = condition,
+            Queries = new List<Query>()
+        };
     }
 
     /// <summary>
@@ -92,7 +96,7 @@ public class QueryBuilder
         _currentQuery.Queries?.Add(query);
         return this;
     }
-    
+
     /// <summary>
     /// Gets the name of the property represented by the provided expression.
     /// </summary>
